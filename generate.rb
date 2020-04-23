@@ -1,20 +1,18 @@
-require 'calyx'
-require 'yaml'
+require_relative './lib/game_name_generator'
 
-ADJECTIVES = YAML.load_file('./data/adjectives.yml')
-LOCATIONS  = YAML.load_file('./data/locations.yml')
-SUBJECTS   = YAML.load_file('./data/subjects.yml')
+options = { alliterate: false }
 
-class GameNameGenerator < Calyx::Grammar
-  start '{adjective} {subject} {prep} {location}'
+OptionParser.new do |opts|
+  opts.banner = "Usage: generate.rb [options]"
 
-  adjective *ADJECTIVES
-  location *LOCATIONS
-  prep *%w[of in from]
-  subject *SUBJECTS
-end
+  opts.on('-a', '--alliterate', 'Make it alliterative') do |a|
+    options[:alliterate] = a
+  end
+end.parse!
 
-name_gen = GameNameGenerator.new
+name_gen = options[:alliterate] ?
+  AlliterativeGameNameGenerators.values.shuffle.shift.new :
+  GameNameGenerator.new
 
 5.times do
   puts name_gen.generate
