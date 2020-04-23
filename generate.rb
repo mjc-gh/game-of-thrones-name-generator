@@ -11,7 +11,7 @@ OptionParser.new do |opts|
 end.parse!
 
 name_gen = options[:alliterate] ?
-  AlliterativeGameNameGenerators.values.shuffle.shift.new :
+  AlliterativeGameNameGenerators.random_generator.new :
   GameNameGenerator.new
 
 5.times do

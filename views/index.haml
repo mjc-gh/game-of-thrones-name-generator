@@ -1,0 +1,103 @@
+%html
+  %head
+    %title Game Name Generator for THRONEMASTER.NET
+
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
+    %meta{name: 'description', content: 'A random name generator for game names on ThroneMaster.net'}
+
+    %link{href: 'https://fonts.googleapis.com/css?family=Ruthie&display=swap', rel: 'stylesheet'}
+
+    :scss
+      * {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        font-family: 'Ruthie', cursive;
+        font-size: 32px;
+        background: #111111;
+        min-height: -webkit-fill-available;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      h1 {
+        color: #F1F1F1;
+        font-size: 2.5rem;
+        margin: auto;
+        padding: 0 0.5rem;
+        text-align: center;
+      }
+
+      form {
+        color: #FFF;
+        font-family:'Roboto',sans-serif;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      button, label {
+        cursor: pointer;
+      }
+
+      button {
+        background: transparent;
+        border: 0.1em solid #FFFFFF;
+        border-radius: 0.12em;
+        font-size: 1rem;
+        display: block;
+        color: #FFFFFF;
+        margin: 1rem;
+        padding: 0.35rem 1.2rem;
+        text-decoration: none;
+        text-align: center;
+        transition:  all 0.2s;
+
+        &:hover {
+          color: #000000;
+          background-color: #FFFFFF;
+        }
+      }
+
+      #src {
+        position: absolute;
+        right: 0.25rem;
+        top: 0.25rem;
+
+        img {
+          width: 1rem;
+          height: 1rem;
+          filter: invert(1);
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        html, body { font-size: 24px; }
+      }
+
+      @media screen and (max-width: 420px) {
+        html, body { font-size: 18px; }
+      }
+
+
+  %body
+    %a#src{href: 'https://github.com/mjc-gh/game-of-thrones-name-generator'}
+      %img{src: 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/github.svg', alt: 'Github octocat logo'}
+
+    %h1= @game_name
+
+    %form{method: 'GET', action: '/'}
+      %label
+        %input{type: 'checkbox', name: 'alliterative', checked: params[:alliterative] == 'on'}
+        Add Alliteration
+      %button{type: 'submit'}
+        Generate

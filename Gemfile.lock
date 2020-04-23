@@ -9,10 +9,38 @@ GEM
       zeitwerk (~> 2.2)
     calyx (0.20.0)
     concurrent-ruby (1.1.6)
+    ffi (1.12.2)
+    haml (5.1.2)
+      temple (>= 0.8.0)
+      tilt
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     minitest (5.14.0)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    nio4r (2.5.2)
+    puma (4.3.3)
+      nio4r (~> 2.0)
+    rack (2.2.2)
+    rack-protection (2.0.8.1)
+      rack
+    rb-fsevent (0.10.3)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
+    ruby2_keywords (0.0.2)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+    sinatra (2.0.8.1)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.8.1)
+      tilt (~> 2.0)
+    temple (0.8.2)
     thread_safe (0.3.6)
+    tilt (2.0.10)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     zeitwerk (2.3.0)
@@ -23,6 +51,10 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   calyx
+  haml
+  puma
+  sass
+  sinatra
 
 BUNDLED WITH
    2.1.4
